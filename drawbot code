@@ -1,0 +1,41 @@
+txt = "why is it not gradient??"
+
+fnt = "Helvetica"
+
+size = height()*0.4
+
+font(fnt,size)
+w,h = textSize(txt)
+
+x = width()
+y = height()/2-fontXHeight()/2
+
+r = 0
+g = 0
+b = 0
+
+figure = 1
+ground = 0
+
+seconds = 3
+fps = 60
+duration = 1/fps
+frames = seconds*fps
+step = (w+width())/frames
+
+gg = random()
+bb = random()
+
+for i in range(frames):
+    newPage()
+    frameDuration(duration)
+    fill(ground)
+    rect(0,0,width(),height())
+    fill(figure)
+    font(fnt,size)
+    rr = i/frames
+    linearGradient((100, 100), (800, 800), [(rr, gg, bb), (1-rr, 1-gg, 1-bb)])
+    text(txt,(x,y))
+    x -= step
+
+saveImage("~/Desktop/animation_gradient.gif")
